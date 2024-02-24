@@ -39,6 +39,12 @@ class PenggunaController extends Controller
         return view('pengguna.create');
     }
 
+
+    public function simpan(Request $request)
+    {
+        //kodinganmu
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -115,6 +121,11 @@ class PenggunaController extends Controller
         ];
         Pengguna::where('name', $id)->update($data);
         return redirect()->to('user/pengguna')->with('success','Berhasil Melakukan Update Data.');
+    }
+
+    public function blabla()
+    {
+
     }
 
     /**

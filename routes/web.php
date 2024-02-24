@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
         
         Route::resource('/user/kategori', CategoryController::class );
 
+        // Route::post('/user/kategori', [CategoryController::class, 'simpan'] );
 
         Route::resource('/user/pengguna', PenggunaController::class );
         Route::resource('/user/menu', ProductController::class );
@@ -54,5 +55,8 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 Route::get('/pdf', [TryController::class, 'index']);
+
+Route::view('tes-layout', 'test-blade.anak');
+Route::view('tes-layout1', 'test-blade.anak1');
 
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductAController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\PromoAController;
+use App\Http\Controllers\TryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,5 +48,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/admin/promo', PromoAController::class )->middleware('userAkses:admin');
 
 });
+Route::get('/pdf', [TryController::class, 'index']);
 
 

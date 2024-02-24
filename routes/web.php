@@ -31,22 +31,27 @@ Route::get('/home', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/user', [UserController::class, 'index']);
-    Route::get('/user/user', [UserController::class, 'user'])->middleware('userAkses:user');
-    Route::get('/user/meja', [UserController::class, 'user'])->middleware('userAkses:user');
-    Route::get('/user/orderan', [UserController::class, 'user'])->middleware('userAkses:user');
     
-    Route::get('/user/admin', [UserController::class, 'admin'])->middleware('userAkses:admin');
-    
-    Route::get('/logout', [SesiController::class, 'logout']);
-    
-    Route::resource('/user/kategori', CategoryController::class )->middleware('userAkses:user');
-    Route::resource('/user/pengguna', PenggunaController::class )->middleware('userAkses:user');
-    Route::resource('/user/menu', ProductController::class )->middleware('userAkses:user');
-    Route::resource('/user/promo', PromoController::class )->middleware('userAkses:user');
+    Route::middleware(['userAkses:user'])->group(function () {
+        Route::get('/user/user', [UserController::class, 'user']);
+        Route::get('/user/meja', [UserController::class, 'user']);
+        Route::get('/user/orderan', [UserController::class, 'user']);
+        
+        Route::get('/user/admin', [UserController::class, 'admin']);
+        
+        Route::get('/logout', [SesiController::class, 'logout']);
+        
+        Route::resource('/user/kategori', CategoryController::class );
 
-    Route::resource('/admin/menu', ProductAController::class )->middleware('userAkses:admin');
-    Route::resource('/admin/promo', PromoAController::class )->middleware('userAkses:admin');
 
+        Route::resource('/user/pengguna', PenggunaController::class );
+        Route::resource('/user/menu', ProductController::class );
+        Route::resource('/user/promo', PromoController::class );
+
+        Route::resource('/admin/menu', ProductAController::class );
+        Route::resource('/admin/promo', PromoAController::class );
+
+    });
 });
 Route::get('/pdf', [TryController::class, 'index']);
 

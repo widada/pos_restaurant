@@ -13,7 +13,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function abc(Request $request)
     {
         $pencarian = $request->pencarian;
         $jumlahBaris = 4;
